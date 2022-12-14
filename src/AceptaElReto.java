@@ -11,9 +11,11 @@ public class AceptaElReto {
     
 
     public static void main(String[] args) {
-        
-        Scanner sc = getScanner();
-        //Este bucle hay que modificarlo en funciÛn del formato de la entrada.
+        //Descomentar para entregar
+        //Scanner sc = getScanner();
+        //Comentar para entregar
+        Scanner sc = getScanner("entrada.in");
+        //Este bucle hay que modificarlo en funci√≥n del formato de la entrada.
         do{
             String cp = sc.nextLine();
             System.out.println(resolverCasoPrueba(cp));
@@ -22,8 +24,8 @@ public class AceptaElReto {
 
     }
     /** * 
-     * Establece la entrada al fichero indicado en Este mÈtodo permite leer lÌnea a lÌnea un fichero en lugar de tener que leer porconsola.la ruta.consola.
-     * @param rutaFichero Path de la ubicaciÛ  del fichero en el sistema.
+     * Establece la entrada al fichero indicado. Este m√©todo permite leer l√≠nea a l√≠nea un fichero en lugar de tener que leer porconsola.
+     * @param rutaFichero Path de la ubicaci√≥  del fichero en el sistema.
 
      */
     public static Scanner getScanner(String rutaFichero){
@@ -38,8 +40,8 @@ public class AceptaElReto {
     }
     
     /**
-     * Establece la entrada est·ndar.
-     * Este es el mÈtodo que se debe utilizar para entregar los problemas.
+     * Establece la entrada est√°ndar.
+     * Este es el m√©todo que se debe utilizar para entregar los problemas.
      * @return Un objeto Scanner asociado al terminal del sistema.
      */
     public static Scanner getScanner(){
