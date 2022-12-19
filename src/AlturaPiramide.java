@@ -47,11 +47,11 @@ public class AlturaPiramide {
 
     
     public static  String resolverCasoPrueba(String cp){
-        //TODO AQUI RESOLVEMOS EL PROBLEMA
-        String salida = null;
         int bloques = Integer.parseInt(cp);
         int altura = 1;
         int totales = 1;
+        //La altura mínima es con toda la pirámide hueca. Si tenemos un solo ladrillo más hay que crear pasar a la siguiente altura.
+        //Se cumple que cada altura se agrega un numero de bloques = (altura*2-1)^2
         while((totales+=Math.pow((altura*2)-1, 2))<=bloques){
             altura++;
         }
