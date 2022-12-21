@@ -1,3 +1,5 @@
+package concururso_navideno_2022;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -6,26 +8,19 @@ import java.util.Scanner;
  *
  * @author Samuel Loureiro Cardoso
  */
-public class Cleopatra {
+public class AlturaPiramide {
     
 
     public static void main(String[] args) {
         //Descomentar para entregar
-        Scanner sc = getScanner();
+        //Scanner sc = getScanner();
         //Comentar para entregar
-        //Scanner sc = getScanner("entrada.in");
-        //Me salto el numero de casos de prueba
-        int n = Integer.parseInt(sc.nextLine());
-        while(n!=0){
-            String cp = sc.nextLine();
+        Scanner sc = getScanner("entrada.in");
+        //Este bucle hay que modificarlo en función del formato de la entrada.
+        String cp;
+        while(!(cp = sc.nextLine()).equals("0")){
             System.out.println(resolverCasoPrueba(cp));
-            n--;
         }
-//        do{
-//            String cp = sc.nextLine();
-//            System.out.println(resolverCasoPrueba(cp));
-//            
-//        }while(sc.hasNext());
     }
     
     /** * 
@@ -54,34 +49,14 @@ public class Cleopatra {
 
     
     public static  String resolverCasoPrueba(String cp){
-        String salida = "EMPATE";
-        String[] params = cp.split(" ");
-        int a = Integer.parseInt(params[0]);
-        int b = Integer.parseInt(params[1]);
-        int c = Integer.parseInt(params[2]);
-        //Calculamos la diferencia entre ambos.
-        int difA = b-a;
-        int difC = c-b;
-        
-        //Si el cero está por el medio, como no se cuenta hay que restarlo.
-        if(a<0 && b>0){
-            difA --;
+        int bloques = Integer.parseInt(cp);
+        int altura = 1;
+        int totales = 1;
+        //La altura mínima es con toda la pirámide hueca. Si tenemos un solo ladrillo más hay que crear pasar a la siguiente altura.
+        //Se cumple que cada altura se agrega un numero de bloques = (altura*2-1)^2
+        while((totales+=Math.pow((altura*2)-1, 2))<=bloques){
+            altura++;
         }
-        
-        
-        if(b<0 && c>0){
-            difC --;
-        }
-        
-        //Calculamos la salida
-        if(difA < difC){
-            salida = a+"";
-        }
-        if(difA > difC){
-            salida = c+"";
-        }
-        
-        
-        return salida;
+        return altura+"";
     }
 }
