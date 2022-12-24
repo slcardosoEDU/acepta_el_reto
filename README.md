@@ -9,3 +9,5 @@
   > Solución al problema [Altura de la pirámide](https://www.aceptaelreto.com/problem/statement.php?id=658&cat=154)
 * [NumeroJeroglificos.java](/src/concururso_navideno_2022/NumeroJeroglificos.java)
   > Solución al problema [Altura de la pirámide](https://www.aceptaelreto.com/problem/statement.php?id=659)
+* [Champollion.java](/src/concururso_navideno_2022/Champollion.java)
+  > Solución al problema [Champollion](https://www.aceptaelreto.com/problem/statement.php?id=660)

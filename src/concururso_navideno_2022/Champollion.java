@@ -2,16 +2,16 @@ package concururso_navideno_2022;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
- * @author Samuel Loureiro Cardoso
+ * @author Samuel
  */
-public class Cleopatra {
-    
-
-    public static void main(String[] args) {
+public class Champollion {
+      public static void main(String[] args) {
         //Descomentar para entregar
         Scanner sc = getScanner();
         //Comentar para entregar
@@ -22,11 +22,6 @@ public class Cleopatra {
             System.out.println(resolverCasoPrueba(cp));
             n--;
         }
-//        do{
-//            String cp = sc.nextLine();
-//            System.out.println(resolverCasoPrueba(cp));
-//            
-//        }while(sc.hasNext());
     }
     
     /** * 
@@ -53,36 +48,36 @@ public class Cleopatra {
         return new Scanner(System.in);        
     }
 
-    
+    //Utilizar el set como atributo es más eficiente que concatenar etructuras.
+    public static Set<String> silabas;
     public static  String resolverCasoPrueba(String cp){
-        String salida = "EMPATE";
-        String[] params = cp.split(" ");
-        int a = Integer.parseInt(params[0]);
-        int b = Integer.parseInt(params[1]);
-        int c = Integer.parseInt(params[2]);
-        //Calculamos la diferencia entre ambos.
-        int difA = b-a;
-        int difC = c-b;
-        
-        //Si el cero está por el medio, como no se cuenta hay que restarlo.
-        if(a<0 && b>0){
-            difA --;
+        silabas = new HashSet<String>();
+        String[] palabras = cp.split(" ");
+        for (String s : palabras){        
+            contarSilabas(s.toUpperCase());
         }
+        return silabas.size()+"";
+    }
+    
+    public static void contarSilabas(String palabra){
         
+        String silaba = "";
         
-        if(b<0 && c>0){
-            difC --;
+        for(int i=0;i<palabra.length();i++){
+            char letra = palabra.charAt(i);
+            //Siempre acumulamos la letra salvo que la siguiente letra sea una vocal.
+            if(silaba.length()>0 && i+1 < palabra.length() && esVocal(palabra.charAt(i+1))){
+                silabas.add(silaba);
+                silaba = letra+"";
+                continue;
+            }
+            silaba+=letra;            
         }
-        
-        //Calculamos la salida
-        if(difA < difC){
-            salida = a+"";
-        }
-        if(difA > difC){
-            salida = c+"";
-        }
-        
-        
-        return salida;
+        silabas.add(silaba);
+       
+    }
+    
+    public static boolean esVocal(char letra){
+        return letra == 'A' || letra == 'E' ||letra == 'I' ||letra == 'O' ||letra == 'U';
     }
 }
